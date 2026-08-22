@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use clap_lex::RawArgs;
-use lingmo::{
+use cosmic::{
     Application, ApplicationExt, Element,
     app::{Core, Settings, Task, context_drawer},
     cosmic_config::{self, CosmicConfigEntry},
@@ -111,7 +111,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         config,
     };
 
-    lingmo::app::run::<App>(settings, flags)?;
+    cosmic::app::run::<App>(settings, flags)?;
 
     Ok(())
 }
@@ -141,7 +141,7 @@ fn table_header(
     sort_category: ProcessCategory,
     sort_direction: bool,
     sortable: bool,
-) -> widget::Row<'static, Message, lingmo::Theme> {
+) -> widget::Row<'static, Message, cosmic::Theme> {
     let mut header = widget::row::with_capacity(categories.len()).align_y(Alignment::Center);
     for &category in categories {
         let mut cat_row = widget::row::with_capacity(2).align_y(Alignment::Center);
@@ -382,7 +382,7 @@ pub struct App {
 impl App {
     fn update_config(&mut self) -> Task<Message> {
         let theme = self.config.app_theme.theme();
-        lingmo::command::set_theme(theme)
+        cosmic::command::set_theme(theme)
     }
 
     fn update_snapshot(&mut self) {
@@ -513,7 +513,7 @@ impl App {
 
             //TODO: implement selected style in liblingmo for standard button
             fn adjust(
-                theme: &lingmo::Theme,
+                theme: &cosmic::Theme,
                 mut style: widget::button::Style,
             ) -> widget::button::Style {
                 style.text_color = Some(theme.cosmic().accent_text_color().into());
@@ -1422,8 +1422,8 @@ impl Application for App {
                 self.update_snapshot();
             }
             Message::Surface(a) => {
-                return lingmo::task::message(lingmo::Action::Cosmic(
-                    lingmo::app::Action::Surface(a),
+                return cosmic::task::message(cosmic::Action::Cosmic(
+                    cosmic::app::Action::Surface(a),
                 ));
             }
             Message::SystemThemeChange => {
@@ -2362,7 +2362,7 @@ impl Application for App {
     fn system_theme_update(
         &mut self,
         _keys: &[&'static str],
-        _new_theme: &lingmo::cosmic_theme::Theme,
+        _new_theme: &cosmic::cosmic_theme::Theme,
     ) -> Task<Self::Message> {
         self.update(Message::SystemThemeChange)
     }

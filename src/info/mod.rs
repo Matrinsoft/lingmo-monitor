@@ -1,4 +1,4 @@
-use lingmo::iced::{
+use cosmic::iced::{
     futures::{SinkExt, Stream},
     stream,
 };

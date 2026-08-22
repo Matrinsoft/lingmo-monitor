@@ -1,4 +1,4 @@
-use lingmo::{
+use cosmic::{
     Renderer, Theme,
     iced::{Color, Point, Rectangle, Size, alignment::Vertical, core::text::Alignment, mouse},
     widget::canvas,
