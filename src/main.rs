@@ -1,8 +1,8 @@
-﻿// Copyright 2023 System76 <info@system76.com>
+// Copyright 2023 System76 <info@system76.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
 use clap_lex::RawArgs;
-use cosmic::{
+use lingmo::{
     Application, ApplicationExt, Element,
     app::{Core, Settings, Task, context_drawer},
     cosmic_config::{self, CosmicConfigEntry},
@@ -111,7 +111,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         config,
     };
 
-    cosmic::app::run::<App>(settings, flags)?;
+    lingmo::app::run::<App>(settings, flags)?;
 
     Ok(())
 }
@@ -127,7 +127,7 @@ fn format_frequency(mhz: u64) -> String {
 fn print_help() {
     println!(
         r#"COSMIC System Monitor
-Designed for the COSMIC鈩?desktop environment, cosmic-monitor is a libcosmic-based system monitor.
+Designed for the COSMIC鈩?desktop environment, cosmic-monitor is a liblingmo-based system monitor.
 
 Project home page: https://github.com/Matrinsoft/lingmo-monitor
 Options:
@@ -141,7 +141,7 @@ fn table_header(
     sort_category: ProcessCategory,
     sort_direction: bool,
     sortable: bool,
-) -> widget::Row<'static, Message, cosmic::Theme> {
+) -> widget::Row<'static, Message, lingmo::Theme> {
     let mut header = widget::row::with_capacity(categories.len()).align_y(Alignment::Center);
     for &category in categories {
         let mut cat_row = widget::row::with_capacity(2).align_y(Alignment::Center);
@@ -382,7 +382,7 @@ pub struct App {
 impl App {
     fn update_config(&mut self) -> Task<Message> {
         let theme = self.config.app_theme.theme();
-        cosmic::command::set_theme(theme)
+        lingmo::command::set_theme(theme)
     }
 
     fn update_snapshot(&mut self) {
@@ -482,7 +482,7 @@ impl App {
         .into()
     }
 
-    //TODO: make a libcosmic button style for tags
+    //TODO: make a liblingmo button style for tags
     fn tag(
         &self,
         element: impl Into<Element<'static, Message>>,
@@ -511,9 +511,9 @@ impl App {
 
             row = row.push(widget::icon::from_name("object-select-symbolic").size(16));
 
-            //TODO: implement selected style in libcosmic for standard button
+            //TODO: implement selected style in liblingmo for standard button
             fn adjust(
-                theme: &cosmic::Theme,
+                theme: &lingmo::Theme,
                 mut style: widget::button::Style,
             ) -> widget::button::Style {
                 style.text_color = Some(theme.cosmic().accent_text_color().into());
@@ -546,7 +546,7 @@ impl App {
         let button = widget::button::custom(row)
             .class(class)
             .on_press(message)
-            //TODO: selected currently does nothing in libcosmic
+            //TODO: selected currently does nothing in liblingmo
             .selected(selected);
         if large {
             button.height(50).padding([space_xxxs, space_s]).into()
@@ -1422,8 +1422,8 @@ impl Application for App {
                 self.update_snapshot();
             }
             Message::Surface(a) => {
-                return cosmic::task::message(cosmic::Action::Cosmic(
-                    cosmic::app::Action::Surface(a),
+                return lingmo::task::message(lingmo::Action::Cosmic(
+                    lingmo::app::Action::Surface(a),
                 ));
             }
             Message::SystemThemeChange => {
@@ -2362,7 +2362,7 @@ impl Application for App {
     fn system_theme_update(
         &mut self,
         _keys: &[&'static str],
-        _new_theme: &cosmic::cosmic_theme::Theme,
+        _new_theme: &lingmo::cosmic_theme::Theme,
     ) -> Task<Self::Message> {
         self.update(Message::SystemThemeChange)
     }

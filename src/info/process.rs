@@ -2,7 +2,7 @@ use std::{
     borrow::Cow, cmp::Ordering, collections::HashMap, fmt, path::Path, sync::Arc, time::Duration,
 };
 
-use cosmic::{
+use lingmo::{
     iced::{Alignment, Length},
     widget::{
         self, Icon,
