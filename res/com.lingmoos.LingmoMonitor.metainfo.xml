@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<component type="desktop-application">
+  <id>com.lingmoos.LingmoMonitor</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <project_group>Lingmo</project_group>
+  <developer_name>Matrinsoft</developer_name>
+  <update_contact>jeremy@matrinsoft.com</update_contact>
+  <url type="homepage">https://github.com/Matrinsoft/cosmic-monitor</url>
+  <url type="bugtracker">https://github.com/Matrinsoft/cosmic-monitor</url>
+  <name>Lingmo System Monitor</name>
+  <summary>System monitor for the Lingmo desktop</summary>
+  <description>
+    <p>System monitor for the Lingmo desktop</p>
+  </description>
+  <keywords>
+    <keyword>Monitor</keyword>
+    <keyword>System</keyword>
+    <keyword>Process</keyword>
+    <keyword>CPU</keyword>
+    <keyword>Memory</keyword>
+    <keyword>Network</keyword>
+    <keyword>History</keyword>
+    <keyword>Usage</keyword>
+  </keywords>
+  <launchable type="desktop-id">com.lingmoos.LingmoMonitor.desktop</launchable>
+  <icon type="remote" height="256" width="256">
+    https://raw.githubusercontent.com/Matrinsoft/cosmic-monitor/master/res/icons/hicolor/256x256/apps/com.lingmoos.LingmoMonitor.svg</icon>
+  <provides>
+    <id>com.lingmoos.LingmoApplication</id>
+    <binaries>
+      <binary>cosmic-monitor</binary>
+    </binaries>
+  </provides>
+</component>
