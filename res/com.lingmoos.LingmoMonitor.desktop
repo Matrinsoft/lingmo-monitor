@@ -5,6 +5,6 @@ Exec=cosmic-monitor
 Terminal=false
 Type=Application
 StartupNotify=true
-Icon=com.system76.CosmicMonitor
+Icon=com.lingmoos.LingmoMonitor
 Categories=COSMIC;System;Monitor;
 Keywords=Monitor;System;Process;CPU;Memory;Network;History;Usage;
