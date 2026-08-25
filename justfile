@@ -1,5 +1,5 @@
 name := 'cosmic-monitor'
-export APPID := 'com.system76.CosmicMonitor'
+export APPID := 'com.lingmoos.LingmoMonitor'
 
 rootdir := ''
 prefix := '/usr'
